@@ -1,0 +1,5 @@
+*.png
+*.pdf
+variable.py
+test.py
+__pycache__/variable.cpython-36.pyc

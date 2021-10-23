@@ -6,7 +6,10 @@ from PIL import Image, ImageTk
 class perso:
     def __init__(self,name,annee,picture_path):
         self.name=name
-        self.annee=annee
+        if annee<5:
+            self.annee=str(annee)+"A"
+        else:
+            self.annee=str(annee-4)+"D"
         self.picture_path=os.path.join(script_dir,picture_path)
         self.photoTkinter=None
     
@@ -70,7 +73,7 @@ def game(Game_ID="0"):
             new_button=tk.Button(frame, image=perso_list[num[cnt]].photo(), command=lambda m=cnt : on_click(m),height = 256, width = 200)
             new_button.grid(row=i, column=j)
             button_list.append(new_button)
-            tk.Label(frame, text="(%sA) %s" %(str(perso_list[num[cnt]].annee),perso_list[num[cnt]].name)).grid(row=i+1, column=j)
+            tk.Label(frame, text="(%s) %s" %(str(perso_list[num[cnt]].annee),perso_list[num[cnt]].name)).grid(row=i+1, column=j)
             cnt=cnt+1
     data_string = tk.StringVar()
     data_string.set(Game_ID)

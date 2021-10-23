@@ -1,9 +1,9 @@
 #https://stackoverflow.com/questions/2693820/extract-images-from-pdf-without-resampling-in-python
 import fitz
 import os
-from variable import nom
+from variable import nom,nom2,nom3,nom4
 
-for k in range(4):
+for k in range(len(os.listdir("Pictures"))):
     name=list()
     doc = fitz.open("Source/source%s.pdf"%str(k+1))
     for i in range(len(doc)):
@@ -15,9 +15,11 @@ for k in range(4):
         text.pop(len(text)-1)
         j=0
         while j<len(text):
-            if text[j]==nom:
+            if text[j]==nom or text[j]==nom2 or text[j]==nom4 :
                 name.append(text[j]+" "+text[j+1]+" "+text[j+2])
                 j=j+3
+            elif text[j]==nom3:
+                j=j+2
             else:
                 name.append(text[j]+" "+text[j+1])
                 j=j+2
